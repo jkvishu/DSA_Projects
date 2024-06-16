@@ -1,0 +1,312 @@
+#include<fstream.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<stdio.h>
+class cricket
+{
+public:
+int o,i,j,k,l,r,r1,r2,x,y;
+cricket()
+{
+r1=0;
+r2=0;
+k=0;
+l=0;
+x=0;
+y=0;
+}
+void accept()
+{
+cout<<"Enter the number of overs you want to play '5','10','15','20'\n";
+cin>>o;
+clrscr();
+}
+void bat()
+{
+for(i=1;i<=o;i++)
+{
+clrscr();
+cout<<"India current score"<<"||wickets down "<<endl;
+cout<<r1<<"|"<<k<<endl;
+cout<<i<<" over starts\n";
+getch();
+for(j=1;j<=6;j++)
+{
+getch();
+randomize();
+r=random(8);
+if(r==5||r==7)
+k=k+1;
+else
+r1=r1+r;
+if(k==10)
+break;
+}
+if(k==10)
+break;
+}
+clrscr();
+cout<<"India scored\n"<<r1<<"|"<<k<<endl;
+getch();
+clrscr();
+}
+void bat2()
+{
+for(i=1;i<=o;i++)
+{
+clrscr();
+cout<<"India current score"<<"||wickets down "<<endl;
+cout<<r1<<"|"<<k<<endl;
+cout<<i<<" over starts\n";
+getch();
+for(j=1;j<=6;j++)
+{
+getch();
+randomize();
+r=random(8);
+if(r==5||r==7)
+k=k+1;
+else
+r1=r1+r;
+if(k==10)
+break;
+if(r1>r2)
+break;
+}
+if(k==10)
+break;
+if(r1>r2)
+break;
+}
+}
+void bowl()
+{
+for(i=1;i<=o;i++)
+{
+clrscr();
+cout<<"Pakistan current score"<<"||wickets down "<<endl;
+cout<<r2<<"|"<<l<<endl;
+cout<<i<<" over starts\n";
+getch();
+for(j=1;j<=6;j++)
+{
+getch();
+randomize();
+r=random(8);
+if(r==5||r==7)
+l=l+1;
+else
+r2=r2+r;
+if(l==10)
+break;
+}
+if(l==10)
+break;
+}
+clrscr();
+cout<<"pakistan scored\n"<<r2<<"|"<<l<<endl;
+getch();
+clrscr();
+}
+void bowl2()
+{
+for(i=1;i<=o;i++)
+{
+clrscr();
+cout<<"Pakistan current score"<<"||wickets down "<<endl;
+cout<<r2<<"|"<<l<<endl;
+cout<<i<<" over starts\n";
+getch();
+for(j=1;j<=6;j++)
+{
+getch();
+randomize();
+r=random(8);
+if(r==5||r==7)
+l=l+1;
+else
+r2=r2+r;
+if(l==10)
+break;
+if(r2>r1)
+break;
+}
+if(l==10)
+break;
+if(r2>r1)
+break;
+}
+}
+void display()
+{
+clrscr();
+cout<<"India score was "<<r1<<"|"<<k<<endl;
+cout<<"Pakistan score was "<<r2<<"|"<<l<<endl<<endl;
+if(r1>r2)
+{
+cout<<"India won by "<<r1-r2<<" run\n";
+x=x+1;
+}
+else if(r2>r1)
+{
+cout<<"pakistan won by "<<10-l<<" wickets\n";
+y=y+1;
+}
+else
+{
+cout<<"The match was drawn btw pakistan and india\n";
+x=x+1;
+y=y+1;
+}
+}
+void display1()
+{
+clrscr();
+cout<<"India score was "<<r1<<"|"<<k<<endl;
+cout<<"Pakistan score was "<<r2<<"|"<<l<<endl<<endl;
+if(r2>r1)
+{
+cout<<"pakistan won by "<<r2-r1<<" run\n";
+y=y+1;
+}
+else if(r1>r2)
+{
+cout<<"india won by "<<10-k<<" wickets\n";
+x=x+1;
+}
+else
+{
+cout<<"The match was drawn btw pakistan and india\n";
+x=x+1;
+y=y+1;
+}
+}
+void display2()
+{
+if(x>y)
+cout<<"INDIA WON THE SERIES\n"<<" BY "<<x<<":"<<y<<endl;
+else if(y>x)
+cout<<"PAKISTAN WON THE SERIES\n"<<" BY "<<y<<":"<<x<<endl;
+else
+cout<<"The series was drawn btw PAKISTAN and INDIA\n"<<" BY "<<x<<":"<<y<<endl;;
+}
+void remove()
+{
+r1=0;
+r2=0;
+r=0;
+l=0;
+k=0;
+}
+};
+void main()
+{
+clrscr();
+fstream fb;
+int t,c,p,A,B=0;
+char nm[20];
+cricket g;
+cout<<"Enter your name\n";
+gets(nm);
+clrscr();
+cout<<'\t'<<'\t'<<'\t'<<"  Hello "<<nm<<"\n\n";
+cout<<">>>>>>>>>>>>>>>>> WELCOME TO RANDOM CRICKET SCORE SHEET <<<<<<<<<<<<<<<<<<\n\n";
+getch();
+clrscr();
+cout<<"THERE IS A SERIES BETWEEN TWO RIVALS INDIA and PAKISTAN\n\n";
+getch();
+cout<<"So lets begin\n";
+getch();
+clrscr();
+cout<<"Enter the number of matches you want to play in the series\n";
+cin>>A;
+clrscr();
+g.accept();
+while(B<A)
+{
+ cout<<B+1<<" Match start\n\n";
+ cout<<"Tossing the coin\n";
+ cout<<"Enter '1' for head and '2' for tail\n";
+ cin>>t;
+ randomize();
+ p=random(2)+1;
+ clrscr();
+ if(t==p)
+ {
+ cout<<"You won the toss\n";
+ cout<<"Enter 1 to bat first and 2 for bowl\n";
+ cin>>c;
+ }
+ else if(t>2||t==0)
+ {
+ cout<<"sorry sir\n";
+ c=4;
+ }
+ else
+ {
+ cout<<"You loss the toss\n";
+ randomize();
+ c=random(2)+1;
+ if(c==1)
+  cout<<"pakistan decide to bowl first\n";
+ else
+  cout<<"pakistan decide to bat first\n";
+  getch();
+ }
+ switch(c)
+ {
+ case 1:
+ g.bat();
+ break;
+ case 2:
+ g.bowl();
+ break;
+ default:
+ cout<<" You have enter Wrong Choice\n";
+ getch();
+ clrscr();
+ continue;
+ }
+ if(c==1)
+ {
+ g.bowl2();
+ g.display();
+ g.remove();
+ getch();
+ clrscr();
+ }
+ else if(c==2)
+ {
+ g.bat2();
+ g.display1();
+ g.remove();
+ getch();
+ clrscr();
+ }
+ B=B+1;
+}
+fb.open("cricket.dat",ios::binary|ios::app);
+g.display2();
+fb.write((char*)&g,sizeof(g));
+fb.close();
+getch();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
